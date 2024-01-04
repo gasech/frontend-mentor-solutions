@@ -1,4 +1,4 @@
-# Frontend Mentor Solutions
+# Frontend Mentor Solutions (WIP)
 
 This repo contains all frontend mentor solutions I've done so far.
 
