@@ -1,0 +1,13 @@
+---
+import data from '@data/rest_countries.json';
+
+export async function getStaticPaths() {
+  return data.map(country => ({ params: { code: country.alpha3Code }}));
+}
+
+const { code } = Astro.params;
+
+const country = data.find(country => country.alpha3Code === code);
+---
+
+<p>{country.name}</p>
