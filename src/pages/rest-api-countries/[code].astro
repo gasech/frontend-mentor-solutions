@@ -1,5 +1,6 @@
 ---
 import data from '@data/rest_countries.json';
+import ChallengeLayout from '@layouts/ChallengeLayout.astro';
 
 export async function getStaticPaths() {
   return data.map(country => ({ params: { code: country.alpha3Code }}));
@@ -10,4 +11,7 @@ const { code } = Astro.params;
 const country = data.find(country => country.alpha3Code === code);
 ---
 
-<p>{country.name}</p>
+<ChallengeLayout title="REST Countries API with color theme switcher" description="Integration with the REST Countries API to pull country data and display it like in the designs.">
+  <p>Country: {country.name}</p>
+  <p></p>
+</ChallengeLayout>

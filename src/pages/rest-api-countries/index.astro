@@ -1,12 +1,12 @@
 ---
-import Layout from '@layouts/Layout.astro';
+import ChallengeLayout from '@layouts/ChallengeLayout.astro';
 import CountryCard from '@components/rest-api-countries/CountryCard.astro';
 import data from '@data/rest_countries.json';
 
 // const data = await fetch('https://restcountries.com/v3.1/all').then(r => r.json());
 ---
 
-<Layout title="REST Countries API with color theme switcher" description="Integration with the REST Countries API to pull country data and display it like in the designs.">
+<ChallengeLayout title="REST Countries API with color theme switcher" description="Integration with the REST Countries API to pull country data and display it like in the designs.">
   <div class="page-content">
     <header>
       <div class="header-content">
@@ -28,12 +28,19 @@ import data from '@data/rest_countries.json';
       </div>
       <main class="countries-display">
         {data.map((country) => (
-        <CountryCard flagImg={country.flags.png} name={country.name} population={country.population} region={country.region} capital={country.capital}/>
+          <CountryCard 
+            flagImg={country.flags.png} 
+            name={country.name} 
+            population={country.population} 
+            region={country.region} 
+            capital={country.capital}
+            alpha3Code={country.alpha3Code}
+          />
         ))}
       </main>
     </div>
   </div>
-</Layout>
+</ChallengeLayout>
 
 <style>
 :root {

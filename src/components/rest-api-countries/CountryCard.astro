@@ -1,17 +1,17 @@
 ---
 interface Props {
-  name: string;
+  name: string | undefined;
   flagImg: string;
   population: number;
   region: string;
-  capital: string;
+  capital: string | undefined;
+  alpha3Code: string | undefined;
 }
 
-const { name, flagImg, population, region, capital } = Astro.props;
-
+const { name, flagImg, population, region, capital, alpha3Code } = Astro.props;
 ---
 
-<div class="country-card">
+<a href={`/rest-api-countries/${alpha3Code}`} class="country-card">
   <img src={flagImg} alt={name + " Flag"}/>
   <h2>{name}</h2>
   <div class="country-card-details">
@@ -19,13 +19,14 @@ const { name, flagImg, population, region, capital } = Astro.props;
     <p>Region: <span>{region}</span></p>
     <p>Capital: <span>{capital}</span></p>
   </div>
-</div>
+</a>
 
 <style>
   .country-card {
     background-color: hsl(0, 0%, 100%);
     box-shadow: var(--shadow);
     border-radius: var(--radius);
+    text-decoration: none;
   }
 
   .country-card img {
